@@ -55,6 +55,5 @@ Academify is an online learning platform that offers a wide range of courses tau
     cd ../client
     npm start
 
-    ```bash
     cd ../server
     npm start
