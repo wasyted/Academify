@@ -41,9 +41,7 @@ Academify is an online learning platform that offers a wide range of courses tau
    cd ../server
    npm install
 
-3. Set up environment variables:
-
-  # Create a .env file in the server directory and add the following variables:
+3. Set up environment variables, create a .env file in the server directory and add the following variables:
 
    ```bash
    PORT=3001
