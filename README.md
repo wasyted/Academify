@@ -35,25 +35,32 @@ Academify is an online learning platform that offers a wide range of courses tau
 
 2. Install dependancies:
 
-  cd academify/client
-  npm install
-  cd ../server
-  npm install
+   ```bash
+   cd academify/client
+   npm install
+   cd ../server
+   npm install
 
 3. Set up environment variables:
 
   Create a .env file in the server directory and add the following variables:
-    PORT=3001
-    MONGODB_URI=your_mongodb_uri
-    JWT_SECRET=your_jwt_secret
-    STRIPE_SECRET_KEY=your_stripe_secret_key
+
+   ```bash
+   PORT=3001
+   MONGODB_URI=your_mongodb_uri
+   JWT_SECRET=your_jwt_secret
+   STRIPE_SECRET_KEY=your_stripe_secret_key
 
 4. Start the development server:
 
   # Start frontend
-  cd ../client
-  npm start
+
+   ```bash
+   cd ../client
+   npm start
 
   # Start backend
-  cd ../server
-  npm start
+
+   ```bash
+   cd ../server
+   npm start
