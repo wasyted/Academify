@@ -51,13 +51,9 @@ Academify is an online learning platform that offers a wide range of courses tau
 
 4. Start the development server:
 
-    # Start frontend
-
     ```bash
     cd ../client
     npm start
-
-    # Start backend
 
     ```bash
     cd ../server
