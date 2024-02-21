@@ -43,7 +43,7 @@ Academify is an online learning platform that offers a wide range of courses tau
 
 3. Set up environment variables:
 
-  Create a .env file in the server directory and add the following variables:
+  # Create a .env file in the server directory and add the following variables:
 
    ```bash
    PORT=3001
