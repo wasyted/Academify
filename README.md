@@ -1,7 +1,7 @@
 # Academify
 
 <p align="center">
-  <img src="https://your-website.com/logo.png" alt="Academify Logo" width="200" height="200">
+  <img src="https://github.com/wasyted/Academify/assets/Academifyhat-logo.png" alt="Academify Logo" width="200" height="200">
 </p>
 
 Academify is an online learning platform that offers a wide range of courses taught by experts in various fields. Whether you're looking to improve your skills, advance your career, or explore new interests, Academify has something for everyone.

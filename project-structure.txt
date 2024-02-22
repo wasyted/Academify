@@ -1,0 +1,20 @@
+Academify/
+├── client/                         # Frontend React App
+│   ├── public/
+│   └── src/
+│       ├── components/             # Reusable UI components
+│       ├── pages/                  # Components for different pages (e.g., Home, Dashboard, Course Details)
+│       ├── services/               # API service functions for communicating with the backend
+│       ├── App.js                  # Main component
+│       ├── index.js                # Entry point
+│       ├── ...
+│       └── ...
+└── server/                         # Backend Node.js App
+    ├── controllers/                # Controllers for handling routes and business logic
+    ├── models/                     # Mongoose models for MongoDB
+    ├── routes/                     # Route definitions
+    ├── utils/                      # Utility functions
+    ├── config/                     # Configuration files (e.g., database connection)
+    ├── middleware/                 # Middleware functions (e.g., authentication)
+    ├── server.js                   # Express server setup
+    └── ...
