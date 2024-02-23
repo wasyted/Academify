@@ -2,10 +2,13 @@ import Image from "next/image"
 
 export default function Header(){
   return(
-    <header className="fixed z-50 top-0 left-0 right-0 z-index-50 flex items-center justify-between px-4 py-2 bg-white/75 backdrop-blur-lg border">
+    <header className="fixed z-50 top-0 left-0 right-0 z-index-50 flex items-center justify-between px-4 py-2 bg-white/75 dark:bg-black/50 backdrop-blur-lg border dark:border-black/50">
       <div className="flex items-center justify-between mx-auto max-w-6xl w-full">
         <a href="/" className="max-w-28">
-          <Image className="w-full" width={538} height={132} src={'/Academify-logo.png'} alt='logo'></Image>
+          <Image className="w-full hidden dark:block" width={538} height={132} src={'/Academify-logo-light.png'} alt='logo'></Image>
+        </a>
+        <a href="/" className="max-w-28">
+          <Image className="w-full dark:hidden block" width={538} height={132} src={'/Academify-logo.png'} alt='logo'></Image>
         </a>
         <div className="sm:hidden flex gap-2 flex-1 justify-start items-center">
           <button className="text-2xl font-bold">
