@@ -8,12 +8,12 @@ import Categories from "@/components/browser/Categories";
 
 export default function Home() {
   return (
-    <main className="relative">
+    <main className="relative bg-white dark:bg-gradient-to-tr dark:from-gray-900 dark:to-slate-900 text-black dark:text-white">
       {/* <SideMenu></SideMenu> */}
       <Header></Header>
       <div className="min-h-screen w-full p-2">
         <div className="text-center mt-24 w-full">
-          <h1 className="text-4xl font-bold bg-gradient-to-tr text-transparent bg-clip-text from-black to-zinc-800">
+          <h1 className="text-4xl font-bold bg-gradient-to-tr text-transparent bg-clip-text from-black to-zinc-800 dark:from-zinc-50 dark:to-zinc-100">
             Browse courses:
           </h1>
           <h2>

@@ -2,7 +2,7 @@ import Image from "next/image"
 
 export default function Header(){
   return(
-    <header className="fixed z-50 top-0 left-0 right-0 z-index-50 flex items-center justify-between px-4 py-2 bg-white/75 dark:bg-black/50 backdrop-blur-lg border dark:border-black/50">
+    <header className="fixed z-50 top-0 left-0 right-0 z-index-50 flex items-center justify-between px-4 py-2 bg-white/75 dark:bg-gray-600/75 dark:border-gray-600/75 backdrop-blur-lg">
       <div className="flex items-center justify-between mx-auto max-w-6xl w-full">
         <a href="/" className="max-w-28">
           <Image className="w-full hidden dark:block" width={538} height={132} src={'/Academify-logo-light.png'} alt='logo'></Image>

@@ -1,8 +1,8 @@
 export default function Categories(){
   return(
-    <header className="flex items-center justify-between max-w-6xl mx-auto px-4 py-2 bg-white/75 backdrop-blur-lg rounded-full border mt-2">
+    <header className="flex items-center justify-between max-w-6xl mx-auto px-4 py-2 rounded-full border mt-2 bg-white/75 dark:bg-gray-600/75 dark:border-gray-600/75 backdrop-blur-lg">
       <div className="flex items-center justify-center gap-2">
-        <p className="transition bg-white px-4 py-1.5 rounded-full text-black font-bold max-w-min focus:ring focus:ring-black">
+        <p className="transition px-4 py-1.5 rounded-full text-black dark:text-zinc-200 font-bold max-w-min">
           Categories:
         </p>
         <button className="border shadow transition bg-gradient-to-tr hover:from-green-500 hover:to-green-400 px-4 py-1 rounded-full text-white font-bold from-green-600 to-green-600 active:from-green-600 active:to-green-400 focus:ring focus:ring-black">
