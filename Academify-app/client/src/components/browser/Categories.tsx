@@ -9,15 +9,18 @@ export default function Categories(){
           Free <span className="rounded-full bg-zinc-50/50 px-1.5">x</span>
         </button>
         <button className="border shadow transition bg-gradient-to-tr hover:from-blue-500 hover:to-blue-400 px-4 py-1 rounded-full text-white font-bold from-blue-600 to-blue-600 active:from-sky-600 active:to-sky-400 focus:ring focus:ring-black">
-          Tech 
+          Programming 
         </button>
         <button className="border shadow transition bg-gradient-to-tr hover:from-indigo-500 hover:to-indigo-400 px-4 py-1 rounded-full text-white font-bold from-indigo-600 to-indigo-600 active:from-indigo-600 active:to-indigo-400 focus:ring focus:ring-black">
-          Media <span className="rounded-full bg-zinc-50/50 px-1.5">x</span>
+          Design <span className="rounded-full bg-zinc-50/50 px-1.5">x</span>
         </button>
         <button className="border shadow transition bg-gradient-to-tr hover:from-orange-500 hover:to-orange-400 px-4 py-1 rounded-full text-white font-bold from-orange-600 to-orange-600 active:from-orange-600 active:to-orange-400 focus:ring focus:ring-black">
-          Science <span className="rounded-full bg-zinc-50/50 px-1.5">x</span>
+          Business <span className="rounded-full bg-zinc-50/50 px-1.5">x</span>
         </button>
         <button className="border shadow transition bg-gradient-to-tr hover:from-yellow-500 hover:to-yellow-400 px-4 py-1 rounded-full text-white font-bold from-yellow-500 to-yellow-500 active:from-yellow-600 active:to-yellow-400 focus:ring focus:ring-black">
+          Language
+        </button>
+        <button className="border shadow transition bg-gradient-to-tr hover:from-red-500 hover:to-red-400 px-4 py-1 rounded-full text-white font-bold from-red-500 to-red-500 active:from-red-600 active:to-red-400 focus:ring focus:ring-black">
           Cooking
         </button>
       </div>

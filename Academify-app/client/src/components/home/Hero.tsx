@@ -9,11 +9,11 @@ export default function Hero(){
             Users from all around the world are already in for the Academify experience. Get started and join our community of teachers and students and get your online certification!
           </p>
           <div className="flex items-center justify-center gap-2">
-            <button className="border dark:border-blue-600 shadow transition bg-gradient-to-tr hover:from-blue-500 hover:to-blue-400 w-40 py-1.5 rounded-full text-white font-bold from-blue-600 to-blue-600 active:from-sky-600 active:to-sky-400">
+            <button className="border dark:border-blue-600 shadow transition bg-gradient-to-tr hover:from-blue-500 hover:to-blue-400 px-4 sm:px-0 sm:w-40 py-1.5 rounded-full text-white font-bold from-blue-600 to-blue-600 active:from-sky-600 active:to-sky-400">
               Get started
             </button>
             <p className="text-zinc-700 dark:text-zinc-300">or</p>
-            <button className="bg-gradient-to-tr from-zinc-500 to-zinc-400 hover:from-zinc-400 hover:to-zinc-300 active:from-zinc-600 active:to-zinc-400 py-1 rounded-full text-white px-4">
+            <button className="bg-gradient-to-tr from-zinc-500 to-zinc-400 hover:from-zinc-400 hover:to-zinc-300 active:from-zinc-600 active:to-zinc-400 py-1 rounded-full text-white px-2 sm:px-4">
               Try as guest
             </button>
           </div>

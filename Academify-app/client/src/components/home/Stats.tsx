@@ -14,7 +14,7 @@ export default function Stats(){
           +150
         </p>
         <p className="text-lg max-w-lg rounded-md text-zinc-700 dark:text-zinc-200">
-          Creators
+          Instructors
         </p>
       </div>
       <div className="flex flex-col-reverse sm:flex-row items-center justify-center gap-2 sm:w-full sm:flex-1">
