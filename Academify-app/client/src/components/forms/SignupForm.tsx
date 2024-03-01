@@ -1,8 +1,12 @@
 'use client'
 import React, { FormEvent } from "react"
 import { useState, useEffect } from "react"
+import { useSearchParams } from 'next/navigation'
 
 export default function SingupForm(){
+  const searchParams = useSearchParams()
+  const role = searchParams.get('role')
+
   const [ firstName, setFirstName ] = useState('');
   const [ lastName, setLastName ] = useState('');
   const [ genre, setGenre ] = useState('');
@@ -14,12 +18,38 @@ export default function SingupForm(){
   const [ password, setPassword ] = useState('');
   const [ confirmPassword, setConfirmPassworwd ] = useState('');
 
-  function handleSubmit(e: FormEvent){
+  async function handleSubmit(e: FormEvent){
     e.preventDefault();
+
+    // Perform the register action
+    const response = await fetch(`localhost:3000/users/register`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ 
+        role: role,
+        firstName: firstName,
+        lastName: lastName,
+        genre: genre,
+        country: country,
+        dateOfBirth: dateOfBirth,
+        username: username,
+        email: email,
+        confirmEmail: confirmEmail,
+        password: password,
+        confirmPassword: confirmPassword
+      })
+    });
+      
+    if (response.ok) {
+      // Update the UI based on the response
+    };
+
   }
 
   return(
-    <div className="mt-5 sm:mt-10 min-h-screen p-4 flex items-center sm:justify-center flex-col gap-y-4">
+    <div className="pt-5 sm:pt-20 min-h-screen p-4 flex items-center sm:justify-center flex-col gap-y-4">
     <h1 className="text-3xl max-w-lg font-black bg-gradient-to-tr text-transparent bg-clip-text from-black to-zinc-800 dark:from-white dark:to-zinc-100">Sign-up to get started!</h1>
     <form action="" method="post" className="max-w-sm" onSubmit={handleSubmit}>
       <div className="flex items-center gap-x-4 mb-5 w-full">

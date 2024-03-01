@@ -1,4 +1,5 @@
 import Image from "next/image"
+import GetStartedButton from "../buttons/GetStartedButton"
 
 export default function Contact(){
   return(
@@ -9,9 +10,7 @@ export default function Contact(){
           Sign-up and create or subscribe to the courses. You can learn anything: from everyday tasks like cooking or carpentry to complex topics like math and physics. We have a comprehensive program for creators in which you can monetize your subscriptions and earn by teaching.
         </p>
         <div className="flex items-center justify-center gap-2">
-          <button className="border dark:border-blue-600 shadow transition bg-gradient-to-tr hover:from-blue-500 hover:to-blue-400 w-40 py-1.5 rounded-full text-white font-bold from-blue-600 to-blue-600 active:from-sky-600 active:to-sky-400">
-            Get started
-          </button>
+          <GetStartedButton></GetStartedButton>
         </div>
       </div>
       <div className="w-full max-w-xs">

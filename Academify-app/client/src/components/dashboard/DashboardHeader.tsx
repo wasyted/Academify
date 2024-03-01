@@ -18,7 +18,7 @@ export default function Header(){
         <div className="flex-1">
           <ul className="flex items-center justify-end">
             <li className="pr-4"><a href="/dashboard">Dashboard</a></li>
-            <li className="px-4 border-l"><a href="/dashboard/browse-courses">Browse courses</a></li>
+            <li className="px-4 border-l"><a href="/browse-courses">Browse courses</a></li>
             <li className="px-4 border-l"><a href="">Help</a></li>
             <li className="pl-4 border-l text-lg">🔔</li>
             <li className="border text-center ml-4 p-1 rounded-full w-10 text-xl bg-zinc-200">👤</li>

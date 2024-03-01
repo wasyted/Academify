@@ -1,4 +1,5 @@
 import Image from "next/image"
+import GetStartedButton from "../buttons/GetStartedButton"
 
 export default function Header(){
   return(
@@ -7,9 +8,7 @@ export default function Header(){
         <Image className="w-full" width={538} height={132} src={'/Academifyhat-logo.png'} alt='logo'></Image>
       </div>
       <div>
-        <button className="border dark:border-blue-600 shadow transition bg-gradient-to-tr hover:from-blue-500 hover:to-blue-400 w-40 py-1.5 rounded-full text-white font-bold from-blue-600 to-blue-600 active:from-sky-600 active:to-sky-400">
-          Get started
-        </button>
+        <GetStartedButton></GetStartedButton>
       </div>
     </header>
   )
