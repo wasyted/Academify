@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <title>noteblndr</title>
+  <link href="/stylesheets/style.css" rel="stylesheet" type="text/css">
+</head>
+<body class="mb-12">
+  <% if (user) {%>
+    <%- include('header')%>
+    <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+      <%- include('note')%>
+      <%- include('comment-form')%>
+      <h2 class="text-start font-bold text-md max-w-md m-auto">Comments</h2>
+      <% Array.from(note.comments).forEach(function (comment) { %>
+        <%- include('comment' , { comment: comment }) %>
+      <% }); %>
+    </div>
+  <% } else { %>
+    <%- include('login-form', { req: req }) %>
+  <%}%>
+  <script type="text/javascript">
+    const likeNoteButtons = document.getElementsByClassName('like-note-button');
+    for(let button of likeNoteButtons){
+      button.addEventListener('click', ()=>{
+        button.classList.toggle('bg-slate-200');
+        button.classList.toggle('shadow-sm');
+        button.classList.toggle('shadow-lg');
+        button.textContent = (button.textContent === '🖤')? '🤍' : '🖤';
+      });
+      button.addEventListener('click' , )
+    };
+    const favNoteButtons = document.getElementsByClassName('fav-note-button');
+    for(let button of favNoteButtons){
+      button.addEventListener('click', ()=>{
+        button.classList.toggle('bg-slate-200');
+        button.classList.toggle('shadow-sm');
+        button.classList.toggle('shadow-lg');
+        button.textContent = (button.textContent === '⭐')? '✨': '⭐';
+      });
+    };
+  </script>
+</body>
+</html>
+
+

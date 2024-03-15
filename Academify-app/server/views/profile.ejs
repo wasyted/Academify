@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%- userData.username %> | noteblndr</title>
+  <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+<body>
+  <% if(user) { %>
+  <%- include('header') %>
+  <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-center">
+      <a href="" class="flex h-20 w-20 rounded-full bg-black focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-black">
+        <img class="h-26 w-26 rounded-full p-1 invert" src="https://img.icons8.com/ios-glyphs/90/000000/user--v1.png" alt="">
+      </a>
+    </div>
+    <div class="flex items-center justify-center gap-x-2 mt-3">
+      <h1 class="font-bold text-center text-2xl">@<%- userData.username %></h1>
+      <%if (userData.friends.requested.some(req => req.user.equals(user._id))){%>
+        <%friendshipStatus = 'Requested';%>
+        <% if(user._id.toString() != userData._id.toString()) { %>
+          <%- include('friend-button' , { displayedUser: userData , friendshipStatus: friendshipStatus}) %>
+          <%- include('friend-dropdown-options' , {displayedUser: userData , friendshipStatus: friendshipStatus}) %>
+        <% } %>
+      <% } else if (user.friends.requested.some(req => req.user.equals(userData._id))) { %>
+        <%friendshipStatus = 'Accept request';%>
+        <% if(user._id.toString() != userData._id.toString()) { %>
+          <%- include('accept-friend-button' , { friendId: userData , friendshipStatus: friendshipStatus}) %>
+          <%- include('friend-dropdown-options' , {displayedUser: userData , friendshipStatus: friendshipStatus}) %>
+        <% } %>
+      <%} else if (user.friends.accepted.some(req => req.user.equals(userData._id))){%>
+        <%friendshipStatus = '✓ Friend';%>
+        <%- include('friend-button' , { displayedUser: userData , friendshipStatus: friendshipStatus}) %>
+        <%- include('friend-dropdown-options' , {displayedUser: userData , friendshipStatus: friendshipStatus}) %>
+      <%} else {%>
+        <% if(user._id.toString() != userData._id.toString()) { %>
+          <%friendshipStatus = '+ Add';%>
+          <%- include('add-friend-button' , { friendId: userData , friendshipStatus: friendshipStatus}) %>
+        <% } %>
+      <% } %>
+    </div>
+    <h1 class="mt-10 w-full text-center text-md">See <%- userData.username %>'s notes:</h1>
+    <% Array.from(notes).forEach(function (note) { %>
+      <%- include('note' , { note: note , formatDate: formatDate }) %>
+    <% }); %>
+  </div>
+  <% } else { %>
+    <%- include('login-form', { req: req }) %>
+  <%}%>
+</body>
+</html>

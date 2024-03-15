@@ -1,0 +1,37 @@
+<% let backgroundColor = 'bg-slate-200';
+  let textColor = 'text-black';
+  let disabled = false;
+  if(friendshipStatus === 'Requested') {
+  backgroundColor = 'bg-black';
+  disabled = true;
+  textColor = 'text-white';
+} else if (friendshipStatus === 'Accepted'){
+  backgroundColor = 'bg-black';
+  textColor = 'text-white';
+  disabled = true;
+} 
+%>
+
+<button data-friend-id="<%= friendId._id %>" id='<%= friendId._id %>' class="flex justify-center rounded-md <%= backgroundColor %> px-2 py-0.5 text-sm font-semibold leading-6 <%= textColor %> shadow-sm hover:bg-black hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-500"><%= friendshipStatus %></button>
+<script>
+  document.getElementById('<%= friendId._id %>').addEventListener('click', async function(event) {
+    const friendId = document.getElementById('<%= friendId._id %>').dataset.friendId;
+    // Perform the like action
+    const response = await fetch(`/profile/<%= friendId._id %>/request/`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ friendId })
+    });
+    
+    if (response.ok) {
+        // Update the UI based on the response
+      const responseData = await response.json();
+      if (responseData.success === true){
+        window.location.reload();
+      };
+    };
+  });
+  
+</script>

@@ -9,7 +9,7 @@ export default function SingupForm(){
 
   const [ firstName, setFirstName ] = useState('');
   const [ lastName, setLastName ] = useState('');
-  const [ genre, setGenre ] = useState('');
+  const [ gender, setGender ] = useState('');
   const [ country, setCountry ] = useState('');
   const [ dateOfBirth, setDateOfBirth ] = useState('');
   const [ username, setUsername ] = useState('');
@@ -22,7 +22,7 @@ export default function SingupForm(){
     e.preventDefault();
 
     // Perform the register action
-    const response = await fetch(`localhost:3000/users/register`, {
+    const response = await fetch(`http://localhost:3000/sign-up`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -31,7 +31,7 @@ export default function SingupForm(){
         role: role,
         firstName: firstName,
         lastName: lastName,
-        genre: genre,
+        gender: gender,
         country: country,
         dateOfBirth: dateOfBirth,
         username: username,
@@ -61,13 +61,13 @@ export default function SingupForm(){
         </label>
       </div>
       <div className="flex items-center gap-x-4 mb-5 w-full">
-        <label htmlFor="genre">Genre:
-          <select className="flex items-center justify-center w-full border border-zinc-500 dark:border-gray-600/75 overflow-hidden rounded-lg shadow-md p-1.5 flex items-center justify-between w-36 focus:outline-none bg-white/75 dark:bg-gray-600/75 dark:border-gray-600/75 backdrop-blur-lg" name="genre" id="genre" value={genre} onChange={e => setGenre(e.target.value)} required>
+        <label htmlFor="gender">Gender:
+          <select className="flex items-center justify-center w-full border border-zinc-500 dark:border-gray-600/75 overflow-hidden rounded-lg shadow-md p-1.5 flex items-center justify-between w-36 focus:outline-none bg-white/75 dark:bg-gray-600/75 dark:border-gray-600/75 backdrop-blur-lg" name="genre" id="genre" value={gender} onChange={e => setGender(e.target.value)} required>
             <option>Select one</option>
-            <option value="Man">Man</option>
-            <option value="Woman">Woman</option>
-            <option value="Other">Other</option>
-            <option value="Rather not say">Rather not say</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+            <option value="rather not say">Rather not say</option>
           </select>
         </label>
         <label htmlFor="country">Country:

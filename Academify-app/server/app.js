@@ -1,15 +1,37 @@
+// This project was created in 2024 by Matías Wasyluk with express-generator.
+// For documentation visit https://www.github.com/wasyted/notes-app/docs
+
 var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const express = require("express");
+const path = require("path");
+const session = require("express-session");
+const passport = require("passport");
+const LocalStrategy = require("passport-local").Strategy;
+const mongoose = require("mongoose");
+const bcrypt = require('bcryptjs');
+const db = require('./api/connectDb');
+const User = require('./models/User');
+const notificationMiddleware = require('./middleware/notificationMiddleware');
+const authenticationMiddleware = require('./middleware/authenticationMiddleware');
+const cors = require("cors")
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+mongoose.connection = db;
 
-var app = express();
+//imports routers
+const indexRouter = require('./routes/index');
+const signUpRouter = require('./controllers/sign-up-form');
+const noteRouter = require('./routes/note');
+const friendsRouter = require('./routes/friends');
+const userRouter = require('./routes/user');
+const loginRouter = require('./routes/login');
+const notificationsRouter = require('./routes/notifications');
 
-// view engine setup
+//initializes express server
+const app = express();
+
+//sets ejs as server-side rendering engine
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
@@ -17,10 +39,87 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(cors());
+
+//server serves static files (such as css and images) from /public folder
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(session({ secret: "cats", resave: false, saveUninitialized: true }));
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(express.urlencoded({ extended: false }));
+
+//use passport user autentication throughout the site
+app.use((req, res, next) => {
+  res.locals.currentUser = req.user;
+  next();
+});
+
+app.use(authenticationMiddleware);
+app.use(notificationMiddleware);
+
+//define routers for each url req
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/sign-up', signUpRouter);
+app.use('/note', noteRouter);
+app.use('/friends', friendsRouter);
+app.use('/profile', userRouter);
+app.use('/log-in', loginRouter);
+app.use('/mark-all-notifications-as-seen', notificationsRouter)
+
+//user autentication via LocalStrategy, bcrypt to compare hashed password and input password.
+passport.use(
+  new LocalStrategy(async (username, password, done) => {
+    try {
+      const user = await User.findOne({ username: username });
+      if (!user) {
+        return done(null, false, { message: "Incorrect username" });
+      };
+      const match = await bcrypt.compare(password, user.password);
+      if (!match) {
+        // passwords do not match!
+        return done(null, false, { message: "Incorrect password" })
+      }
+      return done(null, user);
+    } catch(err) {
+      return done(err);
+    };
+  })
+);
+
+//some passport shenaningans
+passport.serializeUser((user, done) => {
+  done(null, user.id);
+});
+
+passport.deserializeUser(async (id, done) => {
+  try {
+    const user = await User.findById(id);
+    done(null, user);
+  } catch(err) {
+    done(err);
+  };
+});
+
+//to-do: redirect with message stating error to user
+app.post(
+  "/log-in",
+  passport.authenticate("local", {
+    successRedirect: "/",
+    failureRedirect: "/"
+  })
+);
+  
+//handles log-out, redirects to index and displays login form as there is no user authenticated.
+app.get("/log-out", (req, res, next) => {
+  req.logout((err) => {
+    if (err) {
+    return next(err);
+  }
+  res.redirect("/");
+  });
+});
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
